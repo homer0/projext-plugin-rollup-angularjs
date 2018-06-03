@@ -1,0 +1,41 @@
+{
+  "name": "projext-plugin-rollup-angularjs",
+  "description": "Allows you to bundle an AngularJS project with projext using the rollup build engine.",
+  "homepage": "https://homer0.github.io/projext-plugin-rollup-angularjs/",
+  "version": "0.0.3",
+  "repository": "homer0/projext-plugin-rollup-angularjs",
+  "author": "Leonardo Apiwan (@homer0) <me@homer0.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-angularjs-annotate": "0.9.0",
+    "babel-plugin-external-helpers": "6.22.0"
+  },
+  "devDependencies": {
+    "wootils": "^1.2.0",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-node": "6.0.1",
+    "babel-preset-env": "1.7.0",
+    "jest-ex": "4.0.0",
+    "jest-cli": "22.4.4",
+    "jasmine-expect": "3.8.3",
+    "esdoc": "1.1.0",
+    "esdoc-standard-plugin": "1.0.0",
+    "esdoc-node": "1.0.3",
+    "coveralls": "3.0.1"
+  },
+  "engine-strict": true,
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "hooks": "./utils/hooks/install",
+    "test": "./utils/scripts/test",
+    "lint": "./utils/scripts/lint",
+    "lint:full": "./utils/scripts/lint-full",
+    "docs": "./utils/scripts/docs"
+  }
+}
