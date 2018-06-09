@@ -113,10 +113,6 @@ class ProjextAngularJSPlugin {
     const events = app.get('events');
     // Get the `babelHelper` to send to the method that adds support for AngularJS annotations.
     const babelHelper = app.get('babelHelper');
-    // Add the listener for the external plugin settings event.
-    events.on(this._externalPluginEvent, (settings, params) => (
-      this._updateExternalPluginSettings(settings, params.target)
-    ));
     // Add the listener for the target Babel configuration.
     events.on(this._babelConfigurationEvent, (configuration, target) => (
       this._updateBabelConfiguration(configuration, target, babelHelper)
@@ -124,6 +120,10 @@ class ProjextAngularJSPlugin {
     // Add the listener for the default HTML settings.
     events.on(this._htmlSettingsEventName, (settings, target) => (
       this._updateHTMLSettings(settings, target)
+    ));
+    // Add the listener for the external plugin settings event.
+    events.on(this._externalPluginEvent, (settings, params) => (
+      this._updateExternalPluginSettings(settings, params.target)
     ));
   }
   /**
@@ -141,7 +141,9 @@ class ProjextAngularJSPlugin {
   _updateExternalPluginSettings(currentSettings, target) {
     let updatedSettings;
     if (target.framework === this._frameworkProperty && target.library) {
-      updatedSettings = Object.assign({}, currentSettings);
+      updatedSettings = {
+        external: currentSettings.external.slice(),
+      };
       updatedSettings.external.push(...this._externalModulesForLibraries);
     } else {
       updatedSettings = currentSettings;

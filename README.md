@@ -1,12 +1,17 @@
 # projext plugin for AngularJS on Rollup
 
+[![Travis](https://img.shields.io/travis/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square)](https://travis-ci.org/homer0/projext-plugin-rollup-angularjs)
+[![Coveralls github](https://img.shields.io/coveralls/github/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square)](https://coveralls.io/github/homer0/projext-plugin-rollup-angularjs?branch=master)
+[![David](https://img.shields.io/david/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square)](https://david-dm.org/homer0/projext-plugin-rollup-angularjs)
+[![David](https://img.shields.io/david/dev/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square)](https://david-dm.org/homer0/projext-plugin-rollup-angularjs)
+
 Allows you to bundle an [AngularJS](https://angularjs.org) project with [projext](https://yarnpkg.com/en/package/projext) using the [Rollup](https://rollupjs.org) [build engine](https://yarnpkg.com/en/package/projext-plugin-rollup).
 
 ## Introduction
 
 [projext](https://yarnpkg.com/en/package/projext) allows you to configure a project without adding specific settings for a module bundler, then you can decide which build engine to use. This plugin is meant to be used when you are bundling an [AngularJS](https://angularjs.org) application and you are using the [Rollup](https://rollupjs.org) [build engine](https://yarnpkg.com/en/package/projext-plugin-rollup).
 
-It adds the required presets to the [`rollup-plugin-babel`](https://yarnpkg.com/en/package/rollup-plugin-babel) configuration in order to handle AngularJS annotations.
+It adds the [`angularjs-annotate`](https://yarnpkg.com/en/package/babel-plugin-angularjs-annotate) plugin to the [Babel](https://babeljs.io) configuration in order to support AngularJS annotations.
 
 Now you can use the `ngInject` directive on your code to inject your dependencies
 
@@ -41,7 +46,7 @@ Now, when your target gets builded, the plugin will check if the target is using
 
 ### Babel
 
-The [`babel-plugin-angularjs-annotate`](https://yarnpkg.com/en/package/babel-plugin-angularjs-annotate) package only works on `function` statements, that's why it needs to update the configuration of the [`rollup-plugin-babel`](https://yarnpkg.com/en/package/rollup-plugin-babel) in order to work.
+The [`babel-plugin-angularjs-annotate`](https://yarnpkg.com/en/package/babel-plugin-angularjs-annotate) package only works on `function` statements, that's why it needs to update the configuration of the [`babel-preset-env`](https://yarnpkg.com/en/package/babel-preset-env) in order to work.
 
 Let's say you are only supporting the last version of major browsers, well, most of them already support arrow functions and by default they wouldn't be transpiled.
 
@@ -92,7 +97,7 @@ Before doing anything, install the repository hooks:
 yarn run hooks
 ```
 
-### NPM/Yarn Tasks
+### Yarn/NPM Tasks
 
 | Task                    | Description                         |
 |-------------------------|-------------------------------------|
