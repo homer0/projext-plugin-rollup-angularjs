@@ -13,7 +13,7 @@ class ProjextAngularJSPlugin {
      * @access protected
      * @ignore
      */
-    this._externalPluginEvent = 'rollup-external-plugin-settings-configuration-for-browser';
+    this._externalSettingsEventName = 'rollup-external-plugin-settings-configuration-for-browser';
     /**
      * The list of AngularJS packages that should never end up on the bundle if the target is a
      * library.
@@ -21,7 +21,7 @@ class ProjextAngularJSPlugin {
      * @access protected
      * @ignore
      */
-    this._externalModulesForLibraries = ['angular'];
+    this._externalModules = ['angular'];
     /**
      * The name of the reducer event the service will listen for in order to add support for
      * AngularJS annotations.
@@ -122,34 +122,9 @@ class ProjextAngularJSPlugin {
       this._updateHTMLSettings(settings, target)
     ));
     // Add the listener for the external plugin settings event.
-    events.on(this._externalPluginEvent, (settings, params) => (
-      this._updateExternalPluginSettings(settings, params.target)
+    events.on(this._externalSettingsEventName, (settings, params) => (
+      this._updateExternals(settings, params.target)
     ));
-  }
-  /**
-   * This method gets called when the Rollup plugin reduces the settings for the modules that
-   * should be handled as external dependencies. The method validates the targate settings and
-   * if the target is a library, it pushes the list of React packages that shouldn't be bundled.
-   * @param {Object} currentSettings          The settings for external dependencies.
-   * @param {Array}  currentSettings.external The list of dependencies that should be handled as
-   *                                          external.
-   * @param {Target} target                   The target information.
-   * @return {Object} The updated settings.
-   * @access protected
-   * @ignore
-   */
-  _updateExternalPluginSettings(currentSettings, target) {
-    let updatedSettings;
-    if (target.framework === this._frameworkProperty && target.library) {
-      updatedSettings = {
-        external: currentSettings.external.slice(),
-      };
-      updatedSettings.external.push(...this._externalModulesForLibraries);
-    } else {
-      updatedSettings = currentSettings;
-    }
-
-    return updatedSettings;
   }
   /**
    * This method gets called when projext reduces a target Babel configuration. The method will
@@ -246,6 +221,31 @@ class ProjextAngularJSPlugin {
       updatedSettings = currentSettings;
     }
     // Return the updated settings.
+    return updatedSettings;
+  }
+  /**
+   * This method gets called when the Rollup plugin reduces the settings for the modules that
+   * should be handled as external dependencies. The method validates the targate settings and
+   * if the target is a library, it pushes the list of React packages that shouldn't be bundled.
+   * @param {Object} currentSettings          The settings for external dependencies.
+   * @param {Array}  currentSettings.external The list of dependencies that should be handled as
+   *                                          external.
+   * @param {Target} target                   The target information.
+   * @return {Object} The updated settings.
+   * @access protected
+   * @ignore
+   */
+  _updateExternals(currentSettings, target) {
+    let updatedSettings;
+    if (target.framework === this._frameworkProperty && target.library) {
+      updatedSettings = {
+        external: currentSettings.external.slice(),
+      };
+      updatedSettings.external.push(...this._externalModules);
+    } else {
+      updatedSettings = currentSettings;
+    }
+
     return updatedSettings;
   }
 }

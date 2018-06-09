@@ -359,9 +359,6 @@ describe('plugin:projextAngularJS/main', () => {
     };
     const target = {
       framework: 'angularjs',
-      is: {
-        node: false,
-      },
       library: true,
     };
     const initialExternals = {
