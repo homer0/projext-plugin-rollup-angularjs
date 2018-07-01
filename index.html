@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | projext-plugin-rollup-angularjs</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Allows you to bundle an AngularJS project with projext using the Rollup build engine."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="projext-plugin-rollup-angularjs"><meta property="twitter:description" content="Allows you to bundle an AngularJS project with projext using the Rollup build engine."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/homer0/projext-plugin-rollup-angularjs"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/plugin.js~ProjextAngularJSPlugin.html">ProjextAngularJSPlugin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://homer0.github.io/projext/class/src/app/index.js~Projext.html">Projext</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="projext-plugin-for-angularjs-on-rollup">projext plugin for AngularJS on Rollup</h1><p><a href="https://travis-ci.org/homer0/projext-plugin-rollup-angularjs"><img src="https://img.shields.io/travis/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square" alt="Travis"></a>
+<a href="https://coveralls.io/github/homer0/projext-plugin-rollup-angularjs?branch=master"><img src="https://img.shields.io/coveralls/github/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square" alt="Coveralls github"></a>
+<a href="https://david-dm.org/homer0/projext-plugin-rollup-angularjs"><img src="https://img.shields.io/david/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square" alt="David"></a>
+<a href="https://david-dm.org/homer0/projext-plugin-rollup-angularjs"><img src="https://img.shields.io/david/dev/homer0/projext-plugin-rollup-angularjs.svg?style=flat-square" alt="David"></a></p>
+<p>Allows you to bundle an <a href="https://angularjs.org">AngularJS</a> project with <a href="https://yarnpkg.com/en/package/projext">projext</a> using the <a href="https://rollupjs.org">Rollup</a> <a href="https://yarnpkg.com/en/package/projext-plugin-rollup">build engine</a>.</p>
+<h2 id="introduction">Introduction</h2><p><a href="https://yarnpkg.com/en/package/projext">projext</a> allows you to configure a project without adding specific settings for a module bundler, then you can decide which build engine to use. This plugin is meant to be used when you are bundling an <a href="https://angularjs.org">AngularJS</a> application and you are using the <a href="https://rollupjs.org">Rollup</a> <a href="https://yarnpkg.com/en/package/projext-plugin-rollup">build engine</a>.</p>
+<p>It adds the <a href="https://yarnpkg.com/en/package/babel-plugin-angularjs-annotate"><code>angularjs-annotate</code></a> plugin to the <a href="https://babeljs.io">Babel</a> configuration in order to support AngularJS annotations.</p>
+<p>Now you can use the <code>ngInject</code> directive on your code to inject your dependencies</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">class MyService {
+  constructor($http, $q) {
+    &apos;ngInject&apos;;
+
+    this.$http = $http;
+    this.$q = $q;
+    ...
+  }
+  ...
+}</code>
+</code></pre>
+<h2 id="information">Information</h2><table>
+<thead>
+<tr>
+<th>-</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package</td>
+<td>projext-plugin-rollup-angularjs</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Allows you to bundle an AngularJS project with projext using the Rollup build engine.</td>
+</tr>
+<tr>
+<td>Node Version</td>
+<td>&gt;= v6.10.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2><ol>
+<li>You first need the build engine, so install <a href="https://yarnpkg.com/en/package/projext-plugin-rollup"><code>projext-plugin-rollup</code></a>.</li>
+<li>Add a new setting to your target named <code>framework</code> and set its value to <code>angularjs</code>.</li>
+<li>Done</li>
+</ol>
+<p>Now, when your target gets builded, the plugin will check if the target is using Rollup and if the framework is <code>angularjs</code>, then it will make the necessary changes to process the AngularJS annotations.</p>
+<h3 id="babel">Babel</h3><p>The <a href="https://yarnpkg.com/en/package/babel-plugin-angularjs-annotate"><code>babel-plugin-angularjs-annotate</code></a> package only works on <code>function</code> statements, that&apos;s why it needs to update the configuration of the <a href="https://yarnpkg.com/en/package/babel-preset-env"><code>babel-preset-env</code></a> in order to work.</p>
+<p>Let&apos;s say you are only supporting the last version of major browsers, well, most of them already support arrow functions and by default they wouldn&apos;t be transpiled.</p>
+<p>If for some reason you are overwriting the <a href="https://babeljs.io">Babel</a> configuration projext generates, you need to make sure the following transformations are included:</p>
+<ul>
+<li><code>transform-es2015-arrow-functions</code></li>
+<li><code>transform-es2015-classes</code></li>
+<li><code>transform-es2015-parameters</code></li>
+</ul>
+<p>This plugin also adds the <a href="https://yarnpkg.com/en/package/external-helpers"><code>external-helpers</code></a> plugin, for better compatibility with Rollup.</p>
+<h3 id="external-dependencies">External dependencies</h3><p>When bundling your targets, the plugin will check if the target is for Node or if it is a browser library and automatically exclude the AngularJS package so it doesn&apos;t end up on your build.</p>
+<h3 id="default-html">Default HTML</h3><p>If you didn&apos;t create an HTML file for your AngularJS app, projext will create one for you and this plugin will take care of updating the contents of that HTML so you can run your app right away.</p>
+<p>Now, there are a few options you can change in order to customize the way the HTML is generated: You can create a <code>frameworkOptions</code> property on your target configuration and set the following values:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  frameworkOptions: {
+    title: null,
+    appName: null,
+    strict: true,
+    cloak: true,
+    useBody: true,
+    mainComponent: &apos;main&apos;,
+  }
+}</code>
+</code></pre>
+<ul>
+<li><code>title</code>: A custom title for the HTML file. By default, projext, uses the name of the target.</li>
+<li><code>appName</code>: A custom name of the <a href="https://docs.angularjs.org/api/ng/directive/ngApp"><code>ng-app</code> attribute</a>. By default, the plugin will convert te target name to <code>lowerCamelCase</code> and use that.</li>
+<li><code>strict</code>: Whether or not you want to use the <a href="https://docs.angularjs.org/api/ng/directive/ngApp#with-ngstrictdi-"><code>ng-strict-di</code> directive</a>.</li>
+<li><code>cloak</code>: Whether or not you want to use the <a href="https://docs.angularjs.org/api/ng/directive/ngCloak"><code>ng-cloak</code> directive</a>.</li>
+<li><code>useBody</code>: Whether to add the <code>ng-app</code> attribute and the directives on the <code>&lt;body /&gt;</code> or on a <code>&lt;div /&gt;</code> inside it.</li>
+<li><code>mainComponent</code>: The tag name of a component that should be inside the <em>&quot;app tag&quot;</em>.</li>
+</ul>
+<h2 id="development">Development</h2><p>Before doing anything, install the repository hooks:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint"># You can either use npm or yarn, it doesn&apos;t matter
+yarn run hooks</code>
+</code></pre>
+<h3 id="yarn-npm-tasks">Yarn/NPM Tasks</h3><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yarn run hooks</code></td>
+<td>Install the GIT repository hooks.</td>
+</tr>
+<tr>
+<td><code>yarn test</code></td>
+<td>Run the project unit tests.</td>
+</tr>
+<tr>
+<td><code>yarn run lint</code></td>
+<td>Lint the modified files.</td>
+</tr>
+<tr>
+<td><code>yarn run lint:full</code></td>
+<td>Lint the project code.</td>
+</tr>
+<tr>
+<td><code>yarn run docs</code></td>
+<td>Generate the project documentation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing">Testing</h3><p>I use <a href="https://facebook.github.io/jest/">Jest</a> with <a href="https://yarnpkg.com/en/package/jest-ex">Jest-Ex</a> to test the project. The configuration file is on <code>./.jestrc</code>, the tests and mocks are on <code>./tests</code> and the script that runs it is on <code>./utils/scripts/test</code>.</p>
+<h3 id="linting">Linting</h3><p>I use <a href="http://eslint.org">ESlint</a> to validate all our JS code. The configuration file for the project code is on <code>./.eslintrc</code> and for the tests on <code>./tests/.eslintrc</code> (which inherits from the one on the root), there&apos;s also an <code>./.eslintignore</code> to ignore some files on the process, and the script that runs it is on <code>./utils/scripts/lint</code>.</p>
+<h3 id="documentation">Documentation</h3><p>I use <a href="http://esdoc.org">ESDoc</a> to generate HTML documentation for the project. The configuration file is on <code>./.esdocrc</code> and the script that runs it is on <code>./utils/scripts/docs</code>.</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
