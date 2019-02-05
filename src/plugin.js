@@ -39,7 +39,6 @@ class ProjextAngularJSPlugin {
      */
     this._babelPlugins = [
       ['angularjs-annotate', { explicitOnly: true }],
-      'external-helpers',
     ];
     /**
      * The list of transformations the AngularJS annotations plugin needs in order to work. The
@@ -50,9 +49,9 @@ class ProjextAngularJSPlugin {
      * @ignore
      */
     this._babelRequiredEnvFeatures = [
-      'transform-es2015-arrow-functions',
-      'transform-es2015-classes',
-      'transform-es2015-parameters',
+      '@babel/plugin-transform-arrow-functions',
+      '@babel/plugin-transform-classes',
+      '@babel/plugin-transform-parameters',
     ];
     /**
      * The name of the reducer event the service uses to intercept a browser target default HTML
