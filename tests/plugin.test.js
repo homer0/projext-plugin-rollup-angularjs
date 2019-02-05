@@ -107,15 +107,15 @@ describe('plugin:projextAngularJS/main', () => {
     let result = null;
     const expectedConfigWithEnvFeatures = Object.assign({}, initialBabelConfiguration, {
       features: [
-        'transform-es2015-arrow-functions',
-        'transform-es2015-classes',
-        'transform-es2015-parameters',
+        '@babel/plugin-transform-arrow-functions',
+        '@babel/plugin-transform-classes',
+        '@babel/plugin-transform-parameters',
       ],
     });
     const expectedConfigWithPlugin = Object.assign({}, expectedConfigWithEnvFeatures, {
       plugin: [
         ['angularjs-annotate', { explicitOnly: true }],
-        'external-helpers',
+        '@babel/plugin-external-helpers',
       ],
     });
     // When
@@ -129,9 +129,9 @@ describe('plugin:projextAngularJS/main', () => {
     expect(babelHelper.addEnvPresetFeature).toHaveBeenCalledWith(
       initialBabelConfiguration,
       [
-        'transform-es2015-arrow-functions',
-        'transform-es2015-classes',
-        'transform-es2015-parameters',
+        '@babel/plugin-transform-arrow-functions',
+        '@babel/plugin-transform-classes',
+        '@babel/plugin-transform-parameters',
       ]
     );
     expect(babelHelper.addPlugin).toHaveBeenCalledTimes(1);
@@ -139,7 +139,7 @@ describe('plugin:projextAngularJS/main', () => {
       expectedConfigWithEnvFeatures,
       [
         ['angularjs-annotate', { explicitOnly: true }],
-        'external-helpers',
+        '@babel/plugin-external-helpers',
       ]
     );
   });
