@@ -39,7 +39,6 @@ class ProjextAngularJSPlugin {
      */
     this._babelPlugins = [
       ['angularjs-annotate', { explicitOnly: true }],
-      '@babel/plugin-external-helpers',
     ];
     /**
      * The list of transformations the AngularJS annotations plugin needs in order to work. The

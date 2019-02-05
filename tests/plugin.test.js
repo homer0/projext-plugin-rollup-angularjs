@@ -115,7 +115,6 @@ describe('plugin:projextAngularJS/main', () => {
     const expectedConfigWithPlugin = Object.assign({}, expectedConfigWithEnvFeatures, {
       plugin: [
         ['angularjs-annotate', { explicitOnly: true }],
-        '@babel/plugin-external-helpers',
       ],
     });
     // When
@@ -139,7 +138,6 @@ describe('plugin:projextAngularJS/main', () => {
       expectedConfigWithEnvFeatures,
       [
         ['angularjs-annotate', { explicitOnly: true }],
-        '@babel/plugin-external-helpers',
       ]
     );
   });

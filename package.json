@@ -7,8 +7,7 @@
   "author": "Leonardo Apiwan (@homer0) <me@homer0.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-plugin-angularjs-annotate": "0.10.0",
-    "@babel/plugin-external-helpers": "7.2.0"
+    "babel-plugin-angularjs-annotate": "0.10.0"
   },
   "devDependencies": {
     "wootils": "^1.4.0",
