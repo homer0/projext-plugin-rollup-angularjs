@@ -127,7 +127,7 @@ class ProjextAngularJSPlugin {
   }
   /**
    * This method gets called when projext reduces a target Babel configuration. The method will
-   * validate the target settings and add the Babel plugins needed for JSX.
+   * validate the target settings and add the Babel plugin needed for AngularJS annotations.
    * @param {Object}      currentConfiguration The current Babel configuration for the target.
    * @param {Target}      target               The target information.
    * @param {BabelHelper} babelHelper          To update the target configuration and add the
@@ -225,7 +225,8 @@ class ProjextAngularJSPlugin {
   /**
    * This method gets called when the Rollup plugin reduces the settings for the modules that
    * should be handled as external dependencies. The method validates the targate settings and
-   * if the target is a library, it pushes the list of React packages that shouldn't be bundled.
+   * if the target is a library, it pushes the list of AngularJS packages that shouldn't be
+   * bundled.
    * @param {Object} currentSettings          The settings for external dependencies.
    * @param {Array}  currentSettings.external The list of dependencies that should be handled as
    *                                          external.
