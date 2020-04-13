@@ -2,7 +2,7 @@
   "name": "projext-plugin-rollup-angularjs",
   "description": "Allows you to bundle an AngularJS project with projext using the Rollup build engine.",
   "homepage": "https://homer0.github.io/projext-plugin-rollup-angularjs/",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "repository": "homer0/projext-plugin-rollup-angularjs",
   "author": "Leonardo Apiwan (@homer0) <me@homer0.com>",
   "license": "MIT",
